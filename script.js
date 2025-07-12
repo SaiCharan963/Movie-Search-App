@@ -1,5 +1,5 @@
 
-const getURL = "http://www.omdbapi.com/?i=tt3896198&apikey=3eae798c";
+const getURL = "https://www.omdbapi.com/?i=tt3896198&apikey=3eae798c";
 
 
 let favArr = JSON.parse(localStorage.getItem("movies")) || [];
