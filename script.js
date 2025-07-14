@@ -74,14 +74,41 @@ function createMovieCard(movies) {
     })
 }
 
-async function getMovie(query) {
+async function getMovie(query,page) {
 
     try {
-        const response = await fetch(`${getURL}&s=${query}`);
+        const response = await fetch(`${getURL}&s=${query}&page=${page}`);
         const data = await response.json();
         if(data.Response == "True") {
             createMovieCard(data.Search);
-            console.group(data.Search);
+            // console.group(data.Search);
+
+
+            const prev = document.createElement("button");
+            prev.textContent = "← Prev";
+            prev.classList = "buttonStyle";
+            const next = document.createElement("button");
+            next.textContent = "Next →";
+            next.classList = "buttonStyle";
+
+            const pages = document.getElementById("pages");
+            pages.innerHTML="";
+            if(page == 1) {
+                pages.append(next);
+            }
+            else {
+                pages.append(prev, next);
+            }
+
+            if(page != 1) {
+                prev.addEventListener("click", () => {
+                getMovie(query, --page);
+                })
+            }
+
+            next.addEventListener("click", () => {
+                getMovie(query, ++page);
+            })
         }
         else {
             const parent = document.getElementById("movieResults");
@@ -95,8 +122,9 @@ async function getMovie(query) {
 }
 
 // getMovie("titanic");
+let page = 1;
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click", () => {
     const searchInput = document.getElementById("searchInput");
-    getMovie(searchInput.value.trim());
+    getMovie(searchInput.value.trim(), page);
 })
