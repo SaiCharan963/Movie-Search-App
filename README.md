@@ -17,16 +17,6 @@ Replace the placeholder `YOUR_API_KEY` in the JavaScript file (`script.js`) with
 
 ---
 
-## Repository Structure
-
-- **Starter Files**:
-  - Includes the complete HTML and CSS files.
-  - Allows you to focus on writing JavaScript for functionality.
-- **Final Files**:
-  - Includes the fully implemented project with HTML, CSS, and JavaScript.
-
----
-
 ## How to Use
 
 1. Add your **API key** to the `API_URL` variable in the `script.js` file:
